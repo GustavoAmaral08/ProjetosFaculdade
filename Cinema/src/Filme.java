@@ -6,7 +6,7 @@ public class Filme {
     private String categoria;
     private String sinopse;
 
-    public Filme(String titulo, int duracao, int classificacao) {
+    public Filme(String titulo, int duracao, int classificacao, String categoria) {
         this.titulo = titulo;
 
         if(duracao > 0) {
@@ -61,9 +61,7 @@ public class Filme {
     }
 
     public void setSinopse(String sinopse) {
-        if(!sinopse.isBlank()) {
-            this.sinopse = sinopse;
-        }
+        this.sinopse = sinopse;
     }
 
     public boolean alterarCategoria(String novaCategoria) {

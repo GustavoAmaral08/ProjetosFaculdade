@@ -3,14 +3,14 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Scanner;
 
-public class Aplicacao {
+public class Cinema {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
 
         Filme filme1 = new Filme("Spider-Man", 90);
-        Filme filme2 = new Filme("Nuremberg", 180, 18);
-        Filme filme3 = new Filme("Interstellar", 169, 10);
+        Filme filme2 = new Filme("Nuremberg", 180, 18, "Ação");
+        Filme filme3 = new Filme("Interstellar", 169, 10, "Drama");
 
         LocalDateTime horarioSessao1 = LocalDateTime.of(LocalDate.now(), LocalTime.of(15, 30));
         LocalDateTime horarioSessao2 = LocalDateTime.of(LocalDate.now(), LocalTime.of(18, 00));
@@ -168,11 +168,12 @@ public class Aplicacao {
 
         int opcao = 0;
 
-        System.out.println("1 - Código: " + sessao1.getCodigo() + " | Filme: " + sessao1.getFilme().getTitulo() + " | Início: " + sessao1.getHorarioInico());
-        System.out.println("2 - Código: " + sessao2.getCodigo() + " | Filme: " + sessao2.getFilme().getTitulo() + " | Início: " + sessao2.getHorarioInico());
-        System.out.println("3 - Código: " + sessao3.getCodigo() + " | Filme: " + sessao3.getFilme().getTitulo() + " | Início: " + sessao3.getHorarioInico());
-        System.out.println("4 - Código: " + sessao4.getCodigo() + " | Filme: " + sessao4.getFilme().getTitulo() + " | Início: " + sessao4.getHorarioInico());
-        System.out.println("5 - Código: " + sessao5.getCodigo() + " | Filme: " + sessao5.getFilme().getTitulo() + " | Início: " + sessao5.getHorarioInico());
+        System.out.println("1 - Código: " + sessao1.getCodigo() + " | Filme: " + sessao1.getFilme().getTitulo() + " | Início: " + sessao1.getHorarioInicio());
+        System.out.println("2 - Código: " + sessao2.getCodigo() + " | Filme: " + sessao2.getFilme().getTitulo() + " | Início: " + sessao2.getHorarioInicio());
+        System.out.println("3 - Código: " + sessao3.getCodigo() + " | Filme: " + sessao3.getFilme().getTitulo() + " | Início: " + sessao3.getHorarioInicio());
+        System.out.println("4 - Código: " + sessao4.getCodigo() + " | Filme: " + sessao4.getFilme().getTitulo() + " | Início: " + sessao4.getHorarioInicio());
+        System.out.println("5 - Código: " + sessao5.getCodigo() + " | Filme: " + sessao5.getFilme().getTitulo() + " | Início: " + sessao5.getHorarioInicio());
+        System.out.println("Informe a sessão desejada: ");
         opcao = sc.nextInt();
         sc.nextLine();
         System.out.println();
@@ -227,7 +228,7 @@ public class Aplicacao {
                     System.out.println("          DETALHES DA SESSÃO            ");
                     System.out.println("========================================");
                     System.out.println("Código: " + sessao.getCodigo());
-                    System.out.println("Horário de início: " + sessao.getHorarioInico());
+                    System.out.println("Horário de início: " + sessao.getHorarioInicio());
                     System.out.println("Horário de término: " + sessao.consultarHorarioTermino());
                     System.out.println("Capacidade: " + sessao.getCapacidadeMaxima());
                     System.out.println("Ingressos vendidos: " + sessao.getIngressosVendidos());
@@ -297,7 +298,7 @@ public class Aplicacao {
                 } else if (resultado == -1) {
                     System.out.println("Compra não realizada. Idade inválida!");
                 } else if (resultado == 1) {
-                    System.out.println("Compra do ingresso no valor de: R$ " + sessao.getValorIngresso() + " realizada com sucesso!");
+                    System.out.println("Compra do ingresso no valor de: R$ " + Sessao.getValorIngresso() + " realizada com sucesso!");
                 }
 
                 break;
@@ -373,6 +374,10 @@ public class Aplicacao {
 
                 case 0:
                     System.out.println("Voltando ao menu principal...");
+                    break;
+
+                default:
+                    System.out.println("Opção inválida!");
                     break;
             }
         } while (opcao != 0);

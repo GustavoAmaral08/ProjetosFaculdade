@@ -4,17 +4,17 @@ public class Sessao {
 
     private final String codigo;
     private final Filme filme;
-    private final LocalDateTime horarioInico;
+    private final LocalDateTime horarioInicio;
     private final int capacidadeMaxima;
     private int ingressosVendidos;
     private double valorArrecadado;
     private static double valorIngresso = 20;
 
-    public Sessao(String codigo, Filme filme, LocalDateTime horarioInico, int capacidadeMaxima) {
+    public Sessao(String codigo, Filme filme, LocalDateTime horarioInicio, int capacidadeMaxima) {
 
         this.codigo = codigo;
         this.filme = filme;
-        this.horarioInico = horarioInico;
+        this.horarioInicio = horarioInicio;
         if(capacidadeMaxima > 0) {
             this.capacidadeMaxima = capacidadeMaxima;
         } else {
@@ -24,10 +24,10 @@ public class Sessao {
         this.valorArrecadado = 0;
     }
 
-    public Sessao(String codigo, Filme filme, LocalDateTime horarioInico) {
+    public Sessao(String codigo, Filme filme, LocalDateTime horarioInicio) {
         this.codigo = codigo;
         this.filme = filme;
-        this.horarioInico = horarioInico;
+        this.horarioInicio = horarioInicio;
         this.capacidadeMaxima = 50;
         this.ingressosVendidos = 0;
         this.valorArrecadado = 0;
@@ -45,8 +45,8 @@ public class Sessao {
         return calcularValorVenda(0.5);
     }
 
-    public LocalDateTime getHorarioInico() {
-        return horarioInico;
+    public LocalDateTime getHorarioInicio() {
+        return horarioInicio;
     }
 
     public int getCapacidadeMaxima() {
@@ -88,12 +88,12 @@ public class Sessao {
 
     public int venderIngresso(int idade) {
 
-        if (consultarLugaresDisponiveis() == 0) {
-            return -3;
-        } else if (idade <= 0) {
+        if (idade <= 0) {
             return -1;
         } else if (idade < filme.getClassificacao()) {
             return -2;
+        } else if (consultarLugaresDisponiveis() == 0) {
+            return -3;
         }
 
         this.ingressosVendidos++;
@@ -103,12 +103,12 @@ public class Sessao {
 
     public int venderIngresso(int idade, String documento) {
 
-        if(consultarLugaresDisponiveis() == 0) {
-            return -3;
-        } else if (idade <=0 || documento == null || documento.isBlank()) {
+        if(idade <= 0 || documento == null || documento.isBlank()) {
             return -1;
         } else if (idade < filme.getClassificacao()) {
             return -2;
+        } else if (consultarLugaresDisponiveis() == 0) {
+            return -3;
         }
 
         this.ingressosVendidos++;
@@ -117,6 +117,6 @@ public class Sessao {
     }
 
     public LocalDateTime consultarHorarioTermino() {
-        return horarioInico.plusMinutes(filme.getDuracao());
+        return horarioInicio.plusMinutes(filme.getDuracao());
     }
 }
