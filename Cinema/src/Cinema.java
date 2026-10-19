@@ -117,7 +117,11 @@ public class Cinema {
                     System.out.println("========================================");
                     System.out.println("Título: " + filme.getTitulo());
                     System.out.println("Duração: " + filme.getDuracao());
-                    System.out.println("Classificação: " + filme.getClassificacao());
+                    if(filme.getClassificacao() == 0) {
+                        System.out.println("Classificação: Livre");
+                    } else {
+                        System.out.println("Classificação: " + filme.getClassificacao());
+                    }
                     System.out.println("Categoria: " + filme.getCategoria());
                     System.out.println("Sinopse: " + filme.getSinopse());
                     System.out.println("========================================");
@@ -238,7 +242,11 @@ public class Cinema {
                     System.out.println("DADOS DO FILME:");
                     System.out.println("Filme: " + sessao.getFilme().getTitulo());
                     System.out.println("Duração: " + sessao.getFilme().getDuracao());
-                    System.out.println("Classificação: " + sessao.getFilme().getClassificacao());
+                    if(sessao.getFilme().getClassificacao() == 0) {
+                        System.out.println("Classificação: Livre");
+                    } else {
+                        System.out.println("Classificação: " + sessao.getFilme().getClassificacao());
+                    }
                     System.out.println("Categoria: " + sessao.getFilme().getCategoria());
                     System.out.println("Sinopse: " + sessao.getFilme().getSinopse());
                     System.out.println("========================================");
